@@ -15,6 +15,9 @@ django-autoslug = "^1.9.9"
 pillow = "^10.2.0"
 
 
+[tool.poetry.group.dev.dependencies]
+django-debug-toolbar = "^4.3.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
