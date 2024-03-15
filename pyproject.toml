@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "apktau"
+version = "0.1.0"
+description = ""
+authors = ["Aman Rawat <ar.rawataman@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0.3"
+python-dotenv = "^1.0.1"
+dj-database-url = "^2.1.0"
+psycopg = "^3.1.18"
+django-autoslug = "^1.9.9"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
