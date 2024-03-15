@@ -25,7 +25,7 @@ class Publisher(models.Model):
 class Apps(models.Model):
 
     app_name = models.CharField(_("App Name"), max_length=100)
-    app_package_name = models.CharField(_("Package Name"), max_length=100)
+    app_package_name = models.CharField(_("Package Name"), max_length=100, unique=True)
     publisher_name = models.ForeignKey("appstore.Publisher", verbose_name=_("Publisher Name"), on_delete=models.CASCADE)
     app_rating = models.IntegerField(_("Rating"), validators=[
         MinValueValidator(0),
@@ -36,6 +36,8 @@ class Apps(models.Model):
     ])
     app_description = models.TextField(_("App Description"))
     app_updated_on = models.DateField(_("Updated On"), auto_now=True)
+    app_screenshots = models.JSONField(_("Images"), default=list)
+    
 
     class Meta:
         verbose_name = _("App")
