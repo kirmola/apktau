@@ -24,9 +24,16 @@ class Publisher(models.Model):
 
 class Apps(models.Model):
 
+    CATEGORY = (
+        ("app","App"),
+        ("game","Game"),
+        ("none", "Undefined")
+    )
+
     app_name = models.CharField(_("App Name"), max_length=100)
     app_package_name = models.CharField(_("Package Name"), max_length=100, unique=True)
     publisher_name = models.ForeignKey("appstore.Publisher", verbose_name=_("Publisher Name"), on_delete=models.CASCADE)
+    package_category = models.CharField(_("Package Category"), max_length=50, choices=CATEGORY, default=CATEGORY[2])
     app_rating = models.IntegerField(_("Rating"), validators=[
         MinValueValidator(0),
         MaxValueValidator(5)
