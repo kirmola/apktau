@@ -24,16 +24,12 @@ class Publisher(models.Model):
 
 class Apps(models.Model):
 
-    CATEGORY = (
-        ("app","App"),
-        ("game","Game"),
-        ("none", "Undefined")
-    )
-
     app_name = models.CharField(_("App Name"), max_length=100)
+    app_icon = models.URLField(_("App Icon"), max_length=200, default=None)
+    app_header_image = models.URLField(_("Header Image"), max_length=200, default="")
     app_package_name = models.CharField(_("Package Name"), max_length=100, unique=True)
     publisher_name = models.ForeignKey("appstore.Publisher", verbose_name=_("Publisher Name"), on_delete=models.CASCADE)
-    package_category = models.CharField(_("Package Category"), max_length=50, choices=CATEGORY, default=CATEGORY[2])
+    package_category = models.JSONField(_("App Category"), default=list)
     app_rating = models.IntegerField(_("Rating"), validators=[
         MinValueValidator(0),
         MaxValueValidator(5)
@@ -43,14 +39,11 @@ class Apps(models.Model):
     ])
     app_description = models.TextField(_("App Description"))
     app_updated_on = models.DateField(_("Updated On"), auto_now=True)
-    screenshot_1 = models.ImageField(_("Screenshot 1"), upload_to=None, default=None)
-    screenshot_2 = models.ImageField(_("Screenshot 2"), upload_to=None, default=None)
-    screenshot_3 = models.ImageField(_("Screenshot 3"), upload_to=None, default=None)
-    screenshot_4 = models.ImageField(_("Screenshot 4"), upload_to=None, default=None)
-    screenshot_5 = models.ImageField(_("Screenshot 5"), upload_to=None, default=None)
-    screenshot_6 = models.ImageField(_("Screenshot 6"), upload_to=None, default=None)
-    screenshot_7 = models.ImageField(_("Screenshot 7"), upload_to=None, default=None)
-    screenshot_8 = models.ImageField(_("Screenshot 8"), upload_to=None, default=None)
+    app_version = models.CharField(_("App Version"), max_length=50, default=None)
+    app_screenshots = models.JSONField(_("App Screenshots"), default=list)
+    app_summary = models.TextField(_("App Summary"), default=None)
+    app_permissions = models.JSONField(_("App Permissions"), default=dict)
+    app_reviews_histogram = models.JSONField(_("App Histogram"), default=list)
     
 
     class Meta:
