@@ -43,7 +43,14 @@ class Apps(models.Model):
     ])
     app_description = models.TextField(_("App Description"))
     app_updated_on = models.DateField(_("Updated On"), auto_now=True)
-    app_screenshots = models.JSONField(_("Images"), default=list)
+    screenshot_1 = models.ImageField(_("Screenshot 1"), upload_to=None, default=None)
+    screenshot_2 = models.ImageField(_("Screenshot 2"), upload_to=None, default=None)
+    screenshot_3 = models.ImageField(_("Screenshot 3"), upload_to=None, default=None)
+    screenshot_4 = models.ImageField(_("Screenshot 4"), upload_to=None, default=None)
+    screenshot_5 = models.ImageField(_("Screenshot 5"), upload_to=None, default=None)
+    screenshot_6 = models.ImageField(_("Screenshot 6"), upload_to=None, default=None)
+    screenshot_7 = models.ImageField(_("Screenshot 7"), upload_to=None, default=None)
+    screenshot_8 = models.ImageField(_("Screenshot 8"), upload_to=None, default=None)
     
 
     class Meta:
@@ -54,4 +61,4 @@ class Apps(models.Model):
         return self.app_name
 
     def get_absolute_url(self):
-        return reverse("App_detail", kwargs={"pk": self.pk})
+        return reverse("App_detail", kwargs={"package_id": self.app_package_name})
