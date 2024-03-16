@@ -45,6 +45,19 @@ INSTALLED_APPS += [
     "appstore"
 ]
 
+###########################################
+# django tailwind requirements
+
+INSTALLED_APPS += [
+    "tailwind",
+    "theme",
+]
+
+TAILWIND_APP_NAME = 'theme'
+
+
+NPM_BIN_PATH = "C:\\Program Files\\nodejs\\npm.cmd"
+###########################################
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

@@ -17,12 +17,15 @@ DATABASES = {
 
 
 INSTALLED_APPS += [
-    'debug_toolbar'
+    'debug_toolbar',
+    'django_browser_reload'
 ]
 
 
 MIDDLEWARE += [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
+
 
 ]
 
