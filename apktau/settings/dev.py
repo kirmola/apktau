@@ -12,7 +12,11 @@ ROOT_URLCONF = 'apktau.urls_dev'
 
 
 DATABASES = {
-    'default': dj_database_url.parse(environ['DATABASE_URL'])
+    'default': {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "apktau.sqlite3",
+
+    }
 }
 
 
