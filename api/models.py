@@ -28,7 +28,7 @@ class Apps(models.Model):
     app_icon = models.URLField(_("App Icon"), max_length=200, default=None)
     app_header_image = models.URLField(_("Header Image"), max_length=200, default="")
     app_package_name = models.CharField(_("Package Name"), max_length=100, unique=True)
-    publisher_name = models.ForeignKey("appstore.Publisher", verbose_name=_("Publisher Name"), on_delete=models.CASCADE)
+    publisher_name = models.ForeignKey("api.Publisher", verbose_name=_("Publisher Name"), on_delete=models.CASCADE)
     package_category = models.JSONField(_("App Category"), default=list)
     app_rating = models.IntegerField(_("Rating"), validators=[
         MinValueValidator(0),
